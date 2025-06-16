@@ -1,4 +1,6 @@
 # Ejercicios del modulo 5 de Python (escuela MUSK) de JoseManuel Gonzalez Gil.
+import os
+import string
 
 # 1) Escribe una funcion en python para leer el contenido de un archivo de texto "poema.txt" 
 # linea por linea y mostrar el resultado en pantalla.
@@ -7,9 +9,12 @@ def leer_poema():
     try:
         with open("poema.txt", "r", encoding="utf-8") as archivo:
             for linea in archivo:
-                print(linea.rstrip())  
+                print(linea.rstrip())
     except FileNotFoundError:
         print("el archivo 'poema.txt' no existe.")
+        if not archivo.endswith('.txt'):
+         raise ValueError("El archivo no es de texto (.txt)")
+    
 
 leer_poema()
 print("\n....................")
@@ -32,7 +37,8 @@ def contar_lineas():
             print(f"el número de líneas es: {len(lineas)}")
     except FileNotFoundError:
         print("el archivo 'historia.txt' no existe.")
-
+    if not archivo.endswith('.txt'):
+         raise ValueError("El archivo no es de texto (.txt)")
 contar_lineas()
 print("\n....................")
 
@@ -48,7 +54,8 @@ def contar_palabras(nombre_archivo):
             print(f"el número total de palabras es: {len(palabras)}")
     except FileNotFoundError:
         print(f"el archivo '{nombre_archivo}' no existe.")
-
+    if not archivo.endswith('.txt'):
+         raise ValueError("El archivo no es de texto (.txt)")
 
 contar_palabras("historia.txt") #debes escribir el nombre del archivo que quieres contar.
 print("\n....................")
@@ -66,7 +73,8 @@ def buscar_el():
                     print(f"linea {numero_linea}: {linea.rstrip()}")
     except FileNotFoundError:
         print("el archivo 'notas.txt' no existe.")
-
+    if not archivo.endswith('.txt'):
+         raise ValueError("El archivo no es de texto (.txt)")
 buscar_el()
 print("\n....................")
 
@@ -85,7 +93,8 @@ def display_words():
                         print(f"linea {numero_linea}: {palabra}")
     except FileNotFoundError:
         print("el archivo 'story.txt' no existe.")
-
+    if not archivo.endswith('.txt'):
+         raise ValueError("El archivo no es de texto (.txt)")
 display_words()
 print("\n....................")
 
@@ -109,7 +118,8 @@ def hash_display():
             print(resultado)
     except FileNotFoundError:
         print("el archivo 'materia.txt' no existe.")
-
+    if not archivo.endswith('.txt'):
+         raise ValueError("El archivo no es de texto (.txt)")
 hash_display()
 print("\n....................")
 
@@ -117,8 +127,8 @@ print("\n....................")
  #7) escribe un programa en python para generar 26 archivios de texto llamados A.txt, B.txt,
  # y asi sucesivamente hasta z.
 print("\nEjercicio 7:\n")
-import string
-import os
+
+
 def gen_archivos_alfabeto():
     archivos_existentes = all(os.path.exists(f"{letra}.txt") for letra in string.ascii_uppercase)
     if archivos_existentes:
@@ -147,7 +157,8 @@ def añadir_texto():
             print(archivo.read())
     except Exception as e:
         print(f"ocurrio un error: {e}")
-
+    if not archivo.endswith('.txt'):
+         raise ValueError("El archivo no es de texto (.txt)")
 añadir_texto()
 print("\n....................")
 
@@ -171,7 +182,8 @@ def frecuencia_palabras(nombre_archivo):
                 print(f"{palabra}: {conteo}")
     except FileNotFoundError:
         print(f"el archivo '{nombre_archivo}' no existe.")
-
+    if not archivo.endswith('.txt'):
+         raise ValueError("El archivo no es de texto (.txt)")       
 
 frecuencia_palabras("python.txt")
 print("\n....................")
